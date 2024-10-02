@@ -1,69 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <xml>
-    <set name="raylib_folder" value="${haxelib:raylib-hx}/source/lib/src" />
-    <set name="glfw_folder" value="${haxelib:raylib-hx}/source/lib/src/external/glfw" />
-    <set name="raygui_folder" value="${haxelib:raylib-hx}/source/raygui/src" />
+	<pragma once="true" />
 
-    <section>
-        <files id="haxe">
-            <compilerflag value="-I${glfw_folder}/include" />
-            <compilerflag value="-I${raylib_folder}" />
-            <compilerflag value="-I${raylib_folder}/extras" />
-            
-            <compilerflag value="-I${raygui_folder}" />
-            <compilerflag value="-DRAYGUI_IMPLEMENTATION" />
+	<files id="haxe">
+		<compilerflag value="-I${haxelib:hxraylib}/project/raylib/src" />
+	</files>
 
-            <compilerflag value="-DSUPPORT_FILEFORMAT_JPG" unless="raylib-no-jpg" />
-            <compilerflag value="-DSUPPORT_FILEFORMAT_BMP" unless="raylib-no-bmp" />
-            <compilerflag value="-DSUPPORT_FILEFORMAT_TGA" unless="raylib-no-tga" />
-            
-            <file name="${raylib_folder}/rcore.c" />
-            <file name="${raylib_folder}/utils.c" />
-            <file name="${raylib_folder}/rshapes.c" />
-            <file name="${raylib_folder}/rtextures.c" />
-            <file name="${raylib_folder}/rtext.c" />
-            <file name="${raylib_folder}/rmodels.c" />
-            <file name="${raylib_folder}/raudio.c" />
-            <file name="${raylib_folder}/rglfw.c" />
-        </files>
+	<files id="__main__">
+		<compilerflag value="-I${haxelib:hxraylib}/project/raylib/src" />
+	</files>
 
-        <!-- WINDOWS COMPILER -->
-        <files id="haxe" if="windows">
-            <compilerflag value="-DPLATFORM_DESKTOP" />
-            <compilerflag value="-D_GLFW_WIN32" />
-        </files>
+	<files id="raylib">
+		<compilerflag value="-I${haxelib:hxraylib}/project/lib/raylib/src/external/glfw/include" unless="emscripten || android" />
+		<compilerflag value="-I${haxelib:hxraylib}/project/lib/raygui/src/extras" />
+		<compilerflag value="-I${haxelib:hxraylib}/project/lib/raygui/src" />
 
-        <!-- OSX COMPILER -->
-        <files id="haxe" if="macos">
-            <compilerflag value="-DPLATFORM_DESKTOP" />
-            <compilerflag value="-D_GLFW_COCOA" />
-        </files>
+		<file name="${haxelib:hxraylib}/project/raylib/src/raudio.c" />
+		<file name="${haxelib:hxraylib}/project/raylib/src/rcore.c" />
+		<file name="${haxelib:hxraylib}/project/raylib/src/rglfw.c" unless="emscripten || android" />
+		<file name="${haxelib:hxraylib}/project/raylib/src/rmodels.c" />
+		<file name="${haxelib:hxraylib}/project/raylib/src/rshapes.c" />
+		<file name="${haxelib:hxraylib}/project/raylib/src/rtext.c" />
+		<file name="${haxelib:hxraylib}/project/raylib/src/rtextures.c" />
+		<file name="${haxelib:hxraylib}/project/raylib/src/utils.c" />
 
-        <!-- LINUX COMPILER -->
-        <files id="haxe" if="linux">
-            <compilerflag value="-DPLATFORM_DESKTOP" />
-            <compilerflag value="-D_GLFW_X11" />
-            <compilerflag value="-D_GNU_SOURCE" />
-        </files>
+		<compilerflag value="-DRAYGUI_IMPLEMENTATION" />
 
-        <!-- WINDOWS LINKER -->
-        <target id="haxe" tool="linker" toolid="exe" if="windows">
-            <lib name="Winmm.lib" />
-            <lib name="Gdi32.lib" />
-            <lib name="Shell32.lib" />
-        </target>
+		<section if="windows || linux">
+			<compilerflag value="-DPLATFORM_DESKTOP_GLFW" />
+			<compilerflag value="-DGRAPHICS_API_OPENGL_33" />
+		</section>
 
-        <!-- OSX LINKER -->
-        <target id="haxe" tool="linker" if="macos">
-            <flag value="-framework" />
-            <flag value="IOKit" />
-            <flag value="-framework" />
-            <flag value="Cocoa" />
-            <flag value="-framework" />
-            <flag value="OpenGL" />
-        </target>
+		<section if="emscripten">
+			<compilerflag value="-DPLATFORM_WEB" />
+			<compilerflag value="-DGRAPHICS_API_OPENGL_ES2" />
+		</section>
 
-        <!-- LINUX LINKER -->
-        <target id="haxe" tool="linker" if="linux">
-        </target>
-    </section> 
+		<section if="rpi">
+			<compilerflag value="-DEGL_NO_X11" />
+		</section>
+
+		<section if="android">
+			<compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" />
+
+			<compilerflag value="-DPLATFORM_ANDROID" />
+			<compilerflag value="-DGRAPHICS_API_OPENGL_ES2" />
+
+			<file name="${ANDROID_NDK_ROOT}/sources/android/native_app_glue/android_native_app_glue.c" />
+
+			<compilerflag name="-u" value="ANativeActivity_onCreate" />
+		</section>
+
+		<file name="${haxelib:hxraylib}/project/src/android_main.c" if="android" />
+
+		<section unless="MSVC_VER">
+			<compilerflag value="-Wno-missing-braces" />
+			<compilerflag value="-Wno-unused-result" />
+		</section>
+	</files>
+
+	<target id="haxe">
+		<section if="mingw">
+			<lib name="-lopengl32" />
+			<lib name="-lgdi32" />
+			<lib name="-lwinmm" />
+			<lib name="-lshell32" />
+		</section>
+
+		<section if="windows" unless="mingw">
+			<lib name="opengl32.lib" />
+			<lib name="gdi32.lib" />
+			<lib name="winmm.lib" />
+			<lib name="shell32.lib" />
+		</section>
+
+		<section if="linux">
+			<lib name="-lGL" />
+			<lib name="-lpthread" />
+			<lib name="-lm" />
+			<lib name="-ldl" />
+			<lib name="-lrt" />
+			<lib name="-lX11" />
+		</section>
+
+		<section if="rpi">
+			<lib name="-lGLESv2" />
+			<lib name="-lEGL" />
+			<lib name="-ldrm" />
+			<lib name="-lgbm" />
+			<lib name="-lpthread" />
+			<lib name="-lrt" />
+			<lib name="-lm" />
+			<lib name="-ldl" />
+			<lib name="-latomic" />
+		</section>
+
+		<section if="android">
+			<lib name="-llog" />
+			<lib name="-landroid" />
+			<lib name="-lEGL" />
+			<lib name="-lGLESv2" />
+			<lib name="-lOpenSLES" />
+			<lib name="-lm" />
+		</section>
+
+		<files id="raylib" />
+	</target>
+
+        <!--<linker id='exe' exe='em++' if="emscripten">
+            <flag value='-s' />
+            <flag value='WASM=1' />
+            <flag value='-s' />
+            <flag value='USE_GLFW=3' />
+            <flag value='--preload-file'/>
+            <flag value='${ASSET_PATH}'/>
+        </linker>-->
 </xml>
