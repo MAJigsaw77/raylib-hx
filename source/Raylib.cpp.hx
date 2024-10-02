@@ -1501,7 +1501,7 @@ extern enum abstract NPatchLayout(UInt)
 	var THREE_PATCH_HORIZONTAL:UInt;
 }
 
-@:buildXml("<include name='${haxelib:raylib-hx}/source/Build.xml'/>")
+@:buildXml("<include name='${haxelib:raylib-hx}/project/Build.xml'/>")
 @:include("raylib.h")
 extern class Raylib
 {
