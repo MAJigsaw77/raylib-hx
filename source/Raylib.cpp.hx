@@ -1940,7 +1940,7 @@ extern class Raylib
 
 	// CODEPOINT FUNCTIONS
 	// Text string management functions
-	@:native("TextCopy") static function textCopy(dst:cpp.cpp.RawPointer<cpp.Char>, src:cpp.ConstCharStar):Int;
+	@:native("TextCopy") static function textCopy(dst:cpp.RawPointer<cpp.Char>, src:cpp.ConstCharStar):Int;
 
 	// TEXT FUNCTIONS NOT NECESSARY AS HAXE HAS STRING TOOLS
 	//------------------------------------------------------------------------------------
