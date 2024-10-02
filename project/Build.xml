@@ -3,26 +3,26 @@
 	<pragma once="true" />
 
 	<files id="haxe">
-		<compilerflag value="-I${haxelib:hxraylib}/project/raylib/src" />
+		<compilerflag value="-I${haxelib:raylib-hx}/project/raylib/src" />
 	</files>
 
 	<files id="__main__">
-		<compilerflag value="-I${haxelib:hxraylib}/project/raylib/src" />
+		<compilerflag value="-I${haxelib:raylib-hx}/project/raylib/src" />
 	</files>
 
 	<files id="raylib">
-		<compilerflag value="-I${haxelib:hxraylib}/project/lib/raylib/src/external/glfw/include" unless="emscripten || android" />
-		<compilerflag value="-I${haxelib:hxraylib}/project/lib/raygui/src/extras" />
-		<compilerflag value="-I${haxelib:hxraylib}/project/lib/raygui/src" />
+		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/include" unless="emscripten || android" />
+		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raygui/src/extras" />
+		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raygui/src" />
 
-		<file name="${haxelib:hxraylib}/project/raylib/src/raudio.c" />
-		<file name="${haxelib:hxraylib}/project/raylib/src/rcore.c" />
-		<file name="${haxelib:hxraylib}/project/raylib/src/rglfw.c" unless="emscripten || android" />
-		<file name="${haxelib:hxraylib}/project/raylib/src/rmodels.c" />
-		<file name="${haxelib:hxraylib}/project/raylib/src/rshapes.c" />
-		<file name="${haxelib:hxraylib}/project/raylib/src/rtext.c" />
-		<file name="${haxelib:hxraylib}/project/raylib/src/rtextures.c" />
-		<file name="${haxelib:hxraylib}/project/raylib/src/utils.c" />
+		<file name="${haxelib:raylib-hx}/project/raylib/src/raudio.c" />
+		<file name="${haxelib:raylib-hx}/project/raylib/src/rcore.c" />
+		<file name="${haxelib:raylib-hx}/project/raylib/src/rglfw.c" unless="emscripten || android" />
+		<file name="${haxelib:raylib-hx}/project/raylib/src/rmodels.c" />
+		<file name="${haxelib:raylib-hx}/project/raylib/src/rshapes.c" />
+		<file name="${haxelib:raylib-hx}/project/raylib/src/rtext.c" />
+		<file name="${haxelib:raylib-hx}/project/raylib/src/rtextures.c" />
+		<file name="${haxelib:raylib-hx}/project/raylib/src/utils.c" />
 
 		<compilerflag value="-DRAYGUI_IMPLEMENTATION" />
 
@@ -51,7 +51,7 @@
 			<compilerflag name="-u" value="ANativeActivity_onCreate" />
 		</section>
 
-		<file name="${haxelib:hxraylib}/project/src/android_main.c" if="android" />
+		<file name="${haxelib:raylib-hx}/project/src/android_main.c" if="android" />
 
 		<section unless="MSVC_VER">
 			<compilerflag value="-Wno-missing-braces" />
