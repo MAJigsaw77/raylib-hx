@@ -57,7 +57,7 @@ extern class LightImpl
 
 @:forward
 @:nullSafety
-extern abstract Light(cpp.Reference<LightImpl>) to cpp.Struct<LightImpl>
+extern abstract Light(cpp.Reference<LightImpl>) to cpp.Reference<LightImpl>
 {
     inline function new():Void
     {
