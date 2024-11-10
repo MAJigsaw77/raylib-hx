@@ -52,7 +52,7 @@ class Main
         cube.materials[0].shader = shader;
 
         // Create lights
-        final lights:Array<Light> = [
+        final lights:Array<LightReference> = [
             RLights.createLight(LIGHT_POINT, new Vector3(-2, 1, -2), Raymath.vector3Zero(), Raylib.YELLOW, shader),
             RLights.createLight(LIGHT_POINT, new Vector3(2, 1, 2), Raymath.vector3Zero(), Raylib.RED, shader),
             RLights.createLight(LIGHT_POINT, new Vector3(-2, 1, 2), Raymath.vector3Zero(), Raylib.GREEN, shader),
@@ -76,30 +76,22 @@ class Main
             // Check key inputs to enable/disable lights
             if (Raylib.isKeyPressed(KEY_Y))
             {
-                final newLight:Light = lights[0];
-                newLight.enabled = !newLight.enabled;
-                lights[0] = newLight;
+                lights[0].enabled = !lights[0].enabled;
             }
 
             if (Raylib.isKeyPressed(KEY_R))
             {
-                final newLight:Light = lights[1];
-                newLight.enabled = !newLight.enabled;
-                lights[1] = newLight;
+                lights[1].enabled = !lights[1].enabled;
             }
 
             if (Raylib.isKeyPressed(KEY_G))
             {
-                final newLight:Light = lights[2];
-                newLight.enabled = !newLight.enabled;
-                lights[2] = newLight;
+                lights[2].enabled = !lights[2].enabled;
             }
 
             if (Raylib.isKeyPressed(KEY_B))
             {
-                final newLight:Light = lights[3];
-                newLight.enabled = !newLight.enabled;
-                lights[3] = newLight;
+                lights[3].enabled = !lights[3].enabled;
             }
 
             // Update light values (actually, only enable/disable them)
