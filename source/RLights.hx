@@ -57,7 +57,7 @@ extern class LightImpl
 
 @:forward
 @:nullSafety
-extern abstract Light(cpp.Struct<LightImpl>) to cpp.Struct<LightImpl>
+extern abstract Light(cpp.Reference<LightImpl>) to cpp.Struct<LightImpl>
 {
     inline function new():Void
     {
@@ -70,11 +70,11 @@ extern abstract Light(cpp.Struct<LightImpl>) to cpp.Struct<LightImpl>
 
     @:to
     inline function toConstPointer():cpp.RawConstPointer<LightImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
+        return cast this;
 
     @:to
     inline function toPointer():cpp.RawPointer<LightImpl>
-        return cast cpp.RawPointer.addressOf(this);
+        return cast this;
 }
 
 extern enum abstract LightType(LightTypeImpl)
