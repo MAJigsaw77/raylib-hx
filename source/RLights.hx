@@ -38,9 +38,6 @@ import Raylib;
 @:native('Light')
 extern class LightImpl
 {
-    @:native('Light')
-    static function alloc():LightImpl;
-
     var type:Int;
     var enabled:Bool;
     var position:Vector3Impl;
@@ -53,15 +50,17 @@ extern class LightImpl
     var targetLoc:Int;
     var colorLoc:Int;
     var attenuationLoc:Int;
+
+    function new():Void;
 }
 
 @:forward
 @:nullSafety
-extern abstract Light(cpp.Reference<LightImpl>) to cpp.Reference<LightImpl>
+extern abstract Light(cpp.Struct<LightImpl>) to cpp.Struct<LightImpl>
 {
     inline function new():Void
     {
-        this = LightImpl.alloc();
+        this = new LightImpl();
     }
 
     @:from
@@ -70,11 +69,11 @@ extern abstract Light(cpp.Reference<LightImpl>) to cpp.Reference<LightImpl>
 
     @:to
     inline function toConstPointer():cpp.RawConstPointer<LightImpl>
-        return cast this;
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<LightImpl>
-        return cast this;
+        return cast cpp.RawPointer.addressOf(this);
 }
 
 extern enum abstract LightType(LightTypeImpl)
