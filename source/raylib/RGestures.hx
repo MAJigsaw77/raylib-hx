@@ -67,27 +67,11 @@ extern class GestureEventImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract GestureEvent(cpp.Struct<GestureEventImpl>) to cpp.Struct<GestureEventImpl>
-{
-    inline function new():Void
-    {
-        this = new GestureEventImpl();
-    }
+@:native('cpp.Reference<GestureEvent>')
+extern class GestureEventReference extends GestureEventImpl {}
 
-    @:from
-    static inline function fromNative(value:GestureEventImpl):GestureEvent
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<GestureEventImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<GestureEventImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<GestureEvent>')
+extern class GestureEvent extends GestureEventReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('rgestures-impl.h')
