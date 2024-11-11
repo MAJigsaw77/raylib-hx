@@ -44,30 +44,11 @@ extern class Vector2Impl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract Vector2(cpp.Struct<Vector2Impl>) to cpp.Struct<Vector2Impl>
-{
-    inline function new(x:Single, y:Single):Void
-    {
-        final vec2:Vector2Impl = new Vector2Impl();
-        vec2.x = x;
-        vec2.y = y;
-        this = vec2;
-    }
+@:native('cpp.Reference<Vector2>')
+extern class Vector2Reference extends Vector2Impl {}
 
-    @:from
-    static inline function fromNative(value:Vector2Impl):Vector2
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<Vector2Impl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<Vector2Impl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<Vector2>')
+extern class Vector2 extends Vector2Reference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -83,31 +64,11 @@ extern class Vector3Impl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract Vector3(cpp.Struct<Vector3Impl>) to cpp.Struct<Vector3Impl>
-{
-    inline function new(x:Single, y:Single, z:Single):Void
-    {
-        final vec3:Vector3Impl = new Vector3Impl();
-        vec3.x = x;
-        vec3.y = y;
-        vec3.z = z;
-        this = vec3;
-    }
+@:native('cpp.Reference<Vector3>')
+extern class Vector3Reference extends Vector3Impl {}
 
-    @:from
-    static inline function fromNative(value:Vector3Impl):Vector3
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<Vector3Impl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<Vector3Impl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<Vector3>')
+extern class Vector3 extends Vector3Reference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -124,32 +85,11 @@ extern class Vector4Impl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract Vector4(cpp.Struct<Vector4Impl>) to cpp.Struct<Vector4Impl>
-{
-    inline function new(x:Single, y:Single, z:Single, w:Single):Void
-    {
-        final vec4:Vector4Impl = new Vector4Impl();
-        vec4.x = x;
-        vec4.y = y;
-        vec4.z = z;
-        vec4.w = w;
-        this = vec4;
-    }
+@:native('cpp.Reference<Vector4>')
+extern class Vector4Reference extends Vector4Impl {}
 
-    @:from
-    static inline function fromNative(value:Vector4Impl):Vector4
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<Vector4Impl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<Vector4Impl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<Vector4>')
+extern class Vector4 extends Vector4Reference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -181,27 +121,11 @@ extern class MatrixImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract Matrix(cpp.Struct<MatrixImpl>) to cpp.Struct<MatrixImpl>
-{
-    inline function new():Void
-    {
-        this = new MatrixImpl();
-    }
+@:native('cpp.Reference<Matrix>')
+extern class MatrixReference extends MatrixImpl {}
 
-    @:from
-    static inline function fromNative(value:MatrixImpl):Matrix
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<MatrixImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<MatrixImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<Matrix>')
+extern class Matrix extends MatrixReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -218,32 +142,11 @@ extern class ColorImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract Color(cpp.Struct<ColorImpl>) to cpp.Struct<ColorImpl>
-{
-    inline function new(r:cpp.UInt8, g:cpp.UInt8, b:cpp.UInt8, a:cpp.UInt8):Void
-    {
-        final color:ColorImpl = new ColorImpl();
-        color.r = r;
-        color.g = g;
-        color.b = b;
-        color.a = a;
-        this = color;
-    }
+@:native('cpp.Reference<Color>')
+extern class ColorReference extends ColorImpl {}
 
-    @:from
-    static inline function fromNative(value:ColorImpl):Color
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<ColorImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<ColorImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<Color>')
+extern class Color extends ColorReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -260,32 +163,11 @@ extern class RectangleImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract Rectangle(cpp.Struct<RectangleImpl>) to cpp.Struct<RectangleImpl>
-{
-    inline function new(x:Single, y:Single, width:Single, height:Single):Void
-    {
-        final rect:RectangleImpl = new RectangleImpl();
-        rect.x = x;
-        rect.y = y;
-        rect.width = width;
-        rect.height = height;
-        this = rect;
-    }
+@:native('cpp.Reference<Rectangle>')
+extern class RectangleReference extends RectangleImpl {}
 
-    @:from
-    static inline function fromNative(value:RectangleImpl):Rectangle
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<RectangleImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<RectangleImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<Rectangle>')
+extern class Rectangle extends RectangleReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -303,27 +185,11 @@ extern class ImageImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract Image(cpp.Struct<ImageImpl>) to cpp.Struct<ImageImpl>
-{
-    inline function new():Void
-    {
-        this = new ImageImpl();
-    }
+@:native('cpp.Reference<Image>')
+extern class ImageReference extends ImageImpl {}
 
-    @:from
-    static inline function fromNative(value:ImageImpl):Image
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<ImageImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<ImageImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<Image>')
+extern class Image extends ImageReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -341,27 +207,11 @@ extern class TextureImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract Texture(cpp.Struct<TextureImpl>) to cpp.Struct<TextureImpl>
-{
-    inline function new():Void
-    {
-        this = new TextureImpl();
-    }
+@:native('cpp.Reference<Texture>')
+extern class TextureReference extends TextureImpl {}
 
-    @:from
-    static inline function fromNative(value:TextureImpl):Texture
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<TextureImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<TextureImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<Texture>')
+extern class Texture extends TextureReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -377,27 +227,11 @@ extern class RenderTextureImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract RenderTexture(cpp.Struct<RenderTextureImpl>) to cpp.Struct<RenderTextureImpl>
-{
-    inline function new():Void
-    {
-        this = new RenderTextureImpl();
-    }
+@:native('cpp.Reference<RenderTexture>')
+extern class RenderTextureReference extends RenderTextureImpl {}
 
-    @:from
-    static inline function fromNative(value:RenderTextureImpl):RenderTexture
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<RenderTextureImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<RenderTextureImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<RenderTexture>')
+extern class RenderTexture extends RenderTextureReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -416,27 +250,11 @@ extern class NPatchInfoImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract NPatchInfo(cpp.Struct<NPatchInfoImpl>) to cpp.Struct<NPatchInfoImpl>
-{
-    inline function new():Void
-    {
-        this = new NPatchInfoImpl();
-    }
+@:native('cpp.Reference<NPatchInfo>')
+extern class NPatchInfoReference extends NPatchInfoImpl {}
 
-    @:from
-    static inline function fromNative(value:NPatchInfoImpl):NPatchInfo
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<NPatchInfoImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<NPatchInfoImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<NPatchInfo>')
+extern class NPatchInfo extends NPatchInfoReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -454,27 +272,11 @@ extern class GlyphInfoImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract GlyphInfo(cpp.Struct<GlyphInfoImpl>) to cpp.Struct<GlyphInfoImpl>
-{
-    inline function new():Void
-    {
-        this = new GlyphInfoImpl();
-    }
+@:native('cpp.Reference<GlyphInfo>')
+extern class GlyphInfoReference extends GlyphInfoImpl {}
 
-    @:from
-    static inline function fromNative(value:GlyphInfoImpl):GlyphInfo
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<GlyphInfoImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<GlyphInfoImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<GlyphInfo>')
+extern class GlyphInfo extends GlyphInfoReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -493,26 +295,11 @@ extern class FontImpl
     function new():Void;
 }
 
-@:nullSafety
-extern abstract Font(cpp.Struct<FontImpl>) to cpp.Struct<FontImpl>
-{
-    inline function new():Void
-    {
-        this = new FontImpl();
-    }
+@:native('cpp.Reference<Font>')
+extern class FontReference extends FontImpl {}
 
-    @:from
-    static inline function fromNative(value:FontImpl):Font
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<FontImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<FontImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<Font>')
+extern class Font extends FontReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -530,27 +317,11 @@ extern class Camera3DImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract Camera3D(cpp.Struct<Camera3DImpl>) to cpp.Struct<Camera3DImpl>
-{
-    inline function new():Void
-    {
-        this = new Camera3DImpl();
-    }
+@:native('cpp.Reference<Camera3D>')
+extern class Camera3DReference extends Camera3DImpl {}
 
-    @:from
-    static inline function fromNative(value:Camera3DImpl):Camera3D
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<Camera3DImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<Camera3DImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<Camera3D>')
+extern class Camera3D extends Camera3DReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -567,27 +338,11 @@ extern class Camera2DImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract Camera2D(cpp.Struct<Camera2DImpl>) to cpp.Struct<Camera2DImpl>
-{
-    inline function new():Void
-    {
-        this = new Camera2DImpl();
-    }
+@:native('cpp.Reference<Camera2D>')
+extern class Camera2DReference extends Camera2DImpl {}
 
-    @:from
-    static inline function fromNative(value:Camera2DImpl):Camera2D
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<Camera2DImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<Camera2DImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<Camera2D>')
+extern class Camera2D extends Camera2DReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -616,27 +371,11 @@ extern class MeshImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract Mesh(cpp.Struct<MeshImpl>) to cpp.Struct<MeshImpl>
-{
-    inline function new():Void
-    {
-        this = new MeshImpl();
-    }
+@:native('cpp.Reference<Mesh>')
+extern class MeshReference extends MeshImpl {}
 
-    @:from
-    static inline function fromNative(value:MeshImpl):Mesh
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<MeshImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<MeshImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<Mesh>')
+extern class Mesh extends MeshReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -651,27 +390,11 @@ extern class ShaderImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract Shader(cpp.Struct<ShaderImpl>) to cpp.Struct<ShaderImpl>
-{
-    inline function new():Void
-    {
-        this = new ShaderImpl();
-    }
+@:native('cpp.Reference<Shader>')
+extern class ShaderReference extends ShaderImpl {}
 
-    @:from
-    static inline function fromNative(value:ShaderImpl):Shader
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<ShaderImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<ShaderImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<Shader>')
+extern class Shader extends ShaderReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -687,27 +410,11 @@ extern class MaterialMapImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract MaterialMap(cpp.Struct<MaterialMapImpl>) to cpp.Struct<MaterialMapImpl>
-{
-    inline function new():Void
-    {
-        this = new MaterialMapImpl();
-    }
+@:native('cpp.Reference<MaterialMap>')
+extern class MaterialMapReference extends MaterialMapImpl {}
 
-    @:from
-    static inline function fromNative(value:MaterialMapImpl):MaterialMap
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<MaterialMapImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<MaterialMapImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<MaterialMap>')
+extern class MaterialMap extends MaterialMapReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -723,27 +430,11 @@ extern class MaterialImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract Material(cpp.Struct<MaterialImpl>) to cpp.Struct<MaterialImpl>
-{
-    inline function new():Void
-    {
-        this = new MaterialImpl();
-    }
+@:native('cpp.Reference<Material>')
+extern class MaterialReference extends MaterialImpl {}
 
-    @:from
-    static inline function fromNative(value:MaterialImpl):Material
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<MaterialImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<MaterialImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<Material>')
+extern class Material extends MaterialReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -759,27 +450,11 @@ extern class TransformImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract Transform(cpp.Struct<TransformImpl>) to cpp.Struct<TransformImpl>
-{
-    inline function new():Void
-    {
-        this = new TransformImpl();
-    }
+@:native('cpp.Reference<Transform>')
+extern class TransformReference extends TransformImpl {}
 
-    @:from
-    static inline function fromNative(value:TransformImpl):Transform
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<TransformImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<TransformImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<Transform>')
+extern class Transform extends TransformReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -794,27 +469,11 @@ extern class BoneInfoImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract BoneInfo(cpp.Struct<BoneInfoImpl>) to cpp.Struct<BoneInfoImpl>
-{
-    inline function new():Void
-    {
-        this = new BoneInfoImpl();
-    }
+@:native('cpp.Reference<BoneInfo>')
+extern class BoneInfoReference extends BoneInfoImpl {}
 
-    @:from
-    static inline function fromNative(value:BoneInfoImpl):BoneInfo
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<BoneInfoImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<BoneInfoImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<BoneInfo>')
+extern class BoneInfo extends BoneInfoReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -836,27 +495,11 @@ extern class ModelImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract Model(cpp.Struct<ModelImpl>) to cpp.Struct<ModelImpl>
-{
-    inline function new():Void
-    {
-        this = new ModelImpl();
-    }
+@:native('cpp.Reference<Model>')
+extern class ModelReference extends ModelImpl {}
 
-    @:from
-    static inline function fromNative(value:ModelImpl):Model
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<ModelImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<ModelImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<Model>')
+extern class Model extends ModelReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -874,27 +517,11 @@ extern class ModelAnimationImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract ModelAnimation(cpp.Struct<ModelAnimationImpl>) to cpp.Struct<ModelAnimationImpl>
-{
-    inline function new():Void
-    {
-        this = new ModelAnimationImpl();
-    }
+@:native('cpp.Reference<ModelAnimation>')
+extern class ModelAnimationReference extends ModelAnimationImpl {}
 
-    @:from
-    static inline function fromNative(value:ModelAnimationImpl):ModelAnimation
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<ModelAnimationImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<ModelAnimationImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<ModelAnimation>')
+extern class ModelAnimation extends ModelAnimationReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -909,27 +536,11 @@ extern class RayImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract Ray(cpp.Struct<RayImpl>) to cpp.Struct<RayImpl>
-{
-    inline function new():Void
-    {
-        this = new RayImpl();
-    }
+@:native('cpp.Reference<Ray>')
+extern class RayReference extends RayImpl {}
 
-    @:from
-    static inline function fromNative(value:RayImpl):Ray
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<RayImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<RayImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<Ray>')
+extern class Ray extends RayReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -946,27 +557,11 @@ extern class RayCollisionImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract RayCollision(cpp.Struct<RayCollisionImpl>) to cpp.Struct<RayCollisionImpl>
-{
-    inline function new():Void
-    {
-        this = new RayCollisionImpl();
-    }
+@:native('cpp.Reference<RayCollision>')
+extern class RayCollisionReference extends RayCollisionImpl {}
 
-    @:from
-    static inline function fromNative(value:RayCollisionImpl):RayCollision
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<RayCollisionImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<RayCollisionImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<RayCollision>')
+extern class RayCollision extends RayCollisionReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -981,27 +576,11 @@ extern class BoundingBoxImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract BoundingBox(cpp.Struct<BoundingBoxImpl>) to cpp.Struct<BoundingBoxImpl>
-{
-    inline function new():Void
-    {
-        this = new BoundingBoxImpl();
-    }
+@:native('cpp.Reference<BoundingBox>')
+extern class BoundingBoxReference extends BoundingBoxImpl {}
 
-    @:from
-    static inline function fromNative(value:BoundingBoxImpl):BoundingBox
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<BoundingBoxImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<BoundingBoxImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<BoundingBox>')
+extern class BoundingBox extends BoundingBoxReference {}
 
 typedef AudioCallback = cpp.Callable<(bufferData:cpp.RawPointer<cpp.Void>, frames:cpp.UInt32) -> Void>;
 
@@ -1017,27 +596,11 @@ extern class WaveImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract Wave(cpp.Struct<WaveImpl>) to cpp.Struct<WaveImpl>
-{
-    inline function new():Void
-    {
-        this = new WaveImpl();
-    }
+@:native('cpp.Reference<Wave>')
+extern class WaveReference extends WaveImpl {}
 
-    @:from
-    static inline function fromNative(value:WaveImpl):Wave
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<WaveImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<WaveImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<Wave>')
+extern class Wave extends WaveReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -1063,27 +626,11 @@ extern class AudioStreamImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract AudioStream(cpp.Struct<AudioStreamImpl>) to cpp.Struct<AudioStreamImpl>
-{
-    inline function new():Void
-    {
-        this = new AudioStreamImpl();
-    }
+@:native('cpp.Reference<AudioStream>')
+extern class AudioStreamReference extends AudioStreamImpl {}
 
-    @:from
-    static inline function fromNative(value:AudioStreamImpl):AudioStream
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<AudioStreamImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<AudioStreamImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<AudioStream>')
+extern class AudioStream extends AudioStreamReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -1098,27 +645,11 @@ extern class SoundImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract Sound(cpp.Struct<SoundImpl>) to cpp.Struct<SoundImpl>
-{
-    inline function new():Void
-    {
-        this = new SoundImpl();
-    }
+@:native('cpp.Reference<Sound>')
+extern class SoundReference extends SoundImpl {}
 
-    @:from
-    static inline function fromNative(value:SoundImpl):Sound
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<SoundImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<SoundImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<Sound>')
+extern class Sound extends SoundReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -1136,27 +667,11 @@ extern class MusicImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract Music(cpp.Struct<MusicImpl>) to cpp.Struct<MusicImpl>
-{
-    inline function new():Void
-    {
-        this = new MusicImpl();
-    }
+@:native('cpp.Reference<Music>')
+extern class MusicReference extends MusicImpl {}
 
-    @:from
-    static inline function fromNative(value:MusicImpl):Music
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<MusicImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<MusicImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<Music>')
+extern class Music extends MusicReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -1178,27 +693,11 @@ extern class VrDeviceInfoImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract VrDeviceInfo(cpp.Struct<VrDeviceInfoImpl>) to cpp.Struct<VrDeviceInfoImpl>
-{
-    inline function new():Void
-    {
-        this = new VrDeviceInfoImpl();
-    }
+@:native('cpp.Reference<VrDeviceInfo>')
+extern class VrDeviceInfoReference extends VrDeviceInfoImpl {}
 
-    @:from
-    static inline function fromNative(value:VrDeviceInfoImpl):VrDeviceInfo
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<VrDeviceInfoImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<VrDeviceInfoImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<VrDeviceInfo>')
+extern class VrDeviceInfo extends VrDeviceInfoReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -1217,27 +716,11 @@ extern class VrStereoConfigImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract VrStereoConfig(cpp.Struct<VrStereoConfigImpl>) to cpp.Struct<VrStereoConfigImpl>
-{
-    inline function new():Void
-    {
-        this = new VrStereoConfigImpl();
-    }
+@:native('cpp.Reference<VrStereoConfig>')
+extern class VrStereoConfigReference extends VrStereoConfigImpl {}
 
-    @:from
-    static inline function fromNative(value:VrStereoConfigImpl):VrStereoConfig
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<VrStereoConfigImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<VrStereoConfigImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<VrStereoConfig>')
+extern class VrStereoConfig extends VrStereoConfigReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -1253,27 +736,11 @@ extern class FilePathListImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract FilePathList(cpp.Struct<FilePathListImpl>) to cpp.Struct<FilePathListImpl>
-{
-    inline function new():Void
-    {
-        this = new FilePathListImpl();
-    }
+@:native('cpp.Reference<FilePathList>')
+extern class FilePathListReference extends FilePathListImpl {}
 
-    @:from
-    static inline function fromNative(value:FilePathListImpl):FilePathList
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<FilePathListImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<FilePathListImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<FilePathList>')
+extern class FilePathList extends FilePathListReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -1288,27 +755,11 @@ extern class AutomationEventImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract AutomationEvent(cpp.Struct<AutomationEventImpl>) to cpp.Struct<AutomationEventImpl>
-{
-    inline function new():Void
-    {
-        this = new AutomationEventImpl();
-    }
+@:native('cpp.Reference<AutomationEvent>')
+extern class AutomationEventReference extends AutomationEventImpl {}
 
-    @:from
-    static inline function fromNative(value:AutomationEventImpl):AutomationEvent
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<AutomationEventImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<AutomationEventImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<AutomationEvent>')
+extern class AutomationEvent extends AutomationEventReference {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -1323,27 +774,11 @@ extern class AutomationEventListImpl
     function new():Void;
 }
 
-@:forward
-@:nullSafety
-extern abstract AutomationEventList(cpp.Struct<AutomationEventListImpl>) to cpp.Struct<AutomationEventListImpl>
-{
-    inline function new():Void
-    {
-        this = new AutomationEventListImpl();
-    }
+@:native('cpp.Reference<AutomationEventList>')
+extern class AutomationEventListReference extends AutomationEventListImpl {}
 
-    @:from
-    static inline function fromNative(value:AutomationEventListImpl):AutomationEventList
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<AutomationEventListImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<AutomationEventListImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
+@:native('cpp.Struct<AutomationEventList>')
+extern class AutomationEventList extends AutomationEventListReference {}
 
 extern enum abstract ConfigFlags(ConfigFlagsImpl)
 {
