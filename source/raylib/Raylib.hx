@@ -1347,7 +1347,7 @@ extern class Raylib
 
     @:native('GenImageFontAtlas')
     static function GenImageFontAtlas(glyphs:GlyphInfoReference,
-        glyphRecs:Rectangle>Reference, glyphCount:Int, fontSize:Int, padding:Int, packMethod:Int):Image;
+        glyphRecs:RectangleReference, glyphCount:Int, fontSize:Int, padding:Int, packMethod:Int):Image;
 
     @:native('UnloadFontData')
     static function UnloadFontData(glyphs:GlyphInfoReference, glyphCount:Int):Void;
