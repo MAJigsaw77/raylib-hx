@@ -458,7 +458,7 @@ extern class Raylib
     static function MemRealloc(ptr:cpp.RawPointer<cpp.Void>, size:cpp.UInt32):cpp.RawPointer<cpp.Void>;
 
     @:native('MemFree')
-    static function MemFree(ptr:cpp.Void>):Void;
+    static function MemFree(ptr:cpp.RawPointer<cpp.Void>):Void;
 
     @:native('SetTraceLogCallback')
     static function SetTraceLogCallback(callback:TraceLogCallback):Void;
@@ -594,7 +594,7 @@ extern class Raylib
     static function ExportAutomationEventList(list:AutomationEventList, fileName:cpp.ConstCharStar):Bool;
 
     @:native('SetAutomationEventList')
-    static function SetAutomationEventList(list:AutomationEventList>):Void;
+    static function SetAutomationEventList(list:AutomationEventListReference):Void;
 
     @:native('SetAutomationEventBaseFrame')
     static function SetAutomationEventBaseFrame(frame:Int):Void;
@@ -961,7 +961,7 @@ extern class Raylib
 
     @:native('CheckCollisionLines')
     static function CheckCollisionLines(startPos1:Vector2, endPos1:Vector2, startPos2:Vector2, endPos2:Vector2,
-        collisionPoint:Vector2>):Bool;
+        collisionPoint:Vector2Reference):Bool;
 
     @:native('GetCollisionRec')
     static function GetCollisionRec(rec1:Rectangle, rec2:Rectangle):Rectangle;
@@ -1065,7 +1065,7 @@ extern class Raylib
     static function ImageAlphaMask(image:ImageReference, alphaMask:Image):Void;
 
     @:native('ImageAlphaPremultiply')
-    static function ImageAlphaPremultiply(image:Image>):Void;
+    static function ImageAlphaPremultiply(image:ImageReference):Void;
 
     @:native('ImageBlurGaussian')
     static function ImageBlurGaussian(image:ImageReference, blurSize:Int):Void;
@@ -1084,34 +1084,34 @@ extern class Raylib
         fill:Color):Void;
 
     @:native('ImageMipmaps')
-    static function ImageMipmaps(image:Image>):Void;
+    static function ImageMipmaps(image:ImageReference):Void;
 
     @:native('ImageDither')
     static function ImageDither(image:ImageReference, rBpp:Int, gBpp:Int, bBpp:Int, aBpp:Int):Void;
 
     @:native('ImageFlipVertical')
-    static function ImageFlipVertical(image:Image>):Void;
+    static function ImageFlipVertical(image:ImageReference):Void;
 
     @:native('ImageFlipHorizontal')
-    static function ImageFlipHorizontal(image:Image>):Void;
+    static function ImageFlipHorizontal(image:ImageReference):Void;
 
     @:native('ImageRotate')
     static function ImageRotate(image:ImageReference, degrees:Int):Void;
 
     @:native('ImageRotateCW')
-    static function ImageRotateCW(image:Image>):Void;
+    static function ImageRotateCW(image:ImageReference):Void;
 
     @:native('ImageRotateCCW')
-    static function ImageRotateCCW(image:Image>):Void;
+    static function ImageRotateCCW(image:ImageReference):Void;
 
     @:native('ImageColorTint')
     static function ImageColorTint(image:ImageReference, color:Color):Void;
 
     @:native('ImageColorInvert')
-    static function ImageColorInvert(image:Image>):Void;
+    static function ImageColorInvert(image:ImageReference):Void;
 
     @:native('ImageColorGrayscale')
-    static function ImageColorGrayscale(image:Image>):Void;
+    static function ImageColorGrayscale(image:ImageReference):Void;
 
     @:native('ImageColorContrast')
     static function ImageColorContrast(image:ImageReference, contrast:Single):Void;
@@ -1129,10 +1129,10 @@ extern class Raylib
     static function LoadImagePalette(image:Image, maxPaletteSize:Int, colorCount:raylib.utils.IntPointer):ColorReference;
 
     @:native('UnloadImageColors')
-    static function UnloadImageColors(colors:Color>):Void;
+    static function UnloadImageColors(colors:ColorReference):Void;
 
     @:native('UnloadImagePalette')
-    static function UnloadImagePalette(colors:Color>):Void;
+    static function UnloadImagePalette(colors:ColorReference):Void;
 
     @:native('GetImageAlphaBorder')
     static function GetImageAlphaBorder(image:Image, threshold:Single):Rectangle;
@@ -1237,13 +1237,13 @@ extern class Raylib
     static function UnloadRenderTexture(target:RenderTexture):Void;
 
     @:native('UpdateTexture')
-    static function UpdateTexture(texture:Texture, pixels:cpp.Void>):Void;
+    static function UpdateTexture(texture:Texture, pixels:cpp.RawPointer<cpp.Void>):Void;
 
     @:native('UpdateTextureRec')
-    static function UpdateTextureRec(texture:Texture, rec:Rectangle, pixels:cpp.Void>):Void;
+    static function UpdateTextureRec(texture:Texture, rec:Rectangle, pixels:cpp.RawPointer<cpp.Void>):Void;
 
     @:native('GenTextureMipmaps')
-    static function GenTextureMipmaps(texture:Texture>):Void;
+    static function GenTextureMipmaps(texture:TextureReference):Void;
 
     @:native('SetTextureFilter')
     static function SetTextureFilter(texture:Texture, filter:Int):Void;
