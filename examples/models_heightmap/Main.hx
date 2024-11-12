@@ -51,7 +51,7 @@ class Main
 
             ClearBackground(RAYWHITE);
 
-            BeginMode3D(camera);
+            BeginMode3D(cast camera);
             DrawModel(model, Vector3Zero(), 1.0, RED);
             DrawGrid(20, 1.0);
             EndMode3D();
