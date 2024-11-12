@@ -19,7 +19,7 @@ class Main
         InitWindow(screenWidth, screenHeight, "raylib [models] example - heightmap loading and drawing");
 
         // Define our custom camera to look into our 3d world
-        final camera:Camera3D = new Camera3D();
+        final camera:Camera3DReference = new Camera3DReference();
         camera.position = Vector3Zero(); // Camera position
         camera.target = Vector3Zero(); // Camera looking at point
         camera.up = Vector3Zero(); // Camera up vector (rotation towards target)
