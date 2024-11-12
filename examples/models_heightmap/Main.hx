@@ -20,12 +20,7 @@ class Main
 
         // Define our custom camera to look into our 3d world
         final camera:Camera3D = new Camera3D();
-
-        final vec3:Vector3 = Vector3Zero();
-        vec3.x = 18.0;
-        vec3.y = 21.0;
-        vec3.z = 18.0;
-        camera.position = vec3; // Camera position
+        camera.position = Vector3Zero(); // Camera position
         camera.target = Vector3Zero(); // Camera looking at point
         camera.up = Vector3Zero(); // Camera up vector (rotation towards target)
         camera.fovy = 45.0; // Camera field-of-view Y
@@ -33,7 +28,7 @@ class Main
 
         final image:Image = LoadImage("resources/heightmap.png"); // Load heightmap image (RAM)
         final texture:Texture = LoadTextureFromImage(image); // Convert image to texture (VRAM)
-        final mesh:Mesh = GenMeshHeightmap(image, new Vector3(16, 8, 16)); // Generate heightmap mesh (RAM and VRAM)
+        final mesh:Mesh = GenMeshHeightmap(image, Vector3Zero()); // Generate heightmap mesh (RAM and VRAM)
         final model:Model = LoadModelFromMesh(mesh); // Load model from generated mesh
         model.materials[0].maps[cast MATERIAL_MAP_ALBEDO].texture = texture; // Set map diffuse texture
 
@@ -57,13 +52,8 @@ class Main
             ClearBackground(RAYWHITE);
 
             BeginMode3D(camera);
-
-            final vec3:Vector3 = Vector3Zero();
-            vec3.x = vec3.z = -8.0;
-            DrawModel(model, vec3, 1.0, RED);
-
+            DrawModel(model, Vector3Zero(), 1.0, RED);
             DrawGrid(20, 1.0);
-
             EndMode3D();
 
             DrawTexture(texture, Math.floor(screenWidth - texture.width - 20), 20, WHITE);
