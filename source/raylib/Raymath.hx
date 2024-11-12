@@ -154,7 +154,7 @@ extern class Raymath
     static function Vector2Equals(p:Vector2Impl, q:Vector2Impl):Bool;
 
     @:native('Vector3Zero')
-    static function Vector3Zero():Vector3Impl;
+    static function Vector3Zero():Vector3;
 
     @:native('Vector3One')
     static function Vector3One():Vector3Impl;
